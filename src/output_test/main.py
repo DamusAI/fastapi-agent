@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 import sys
 import warnings
-import json
 from fastapi import FastAPI
 from pydantic import BaseModel
-from crew import OutputTest
+from src.output_test.crew import OutputTest
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
