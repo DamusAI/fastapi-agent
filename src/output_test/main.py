@@ -4,10 +4,21 @@ import warnings
 from fastapi import FastAPI
 from pydantic import BaseModel
 from src.output_test.crew import OutputTest
+from fastapi.middleware.cors import CORSMiddleware
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
 app = FastAPI()
+
+# Add this middleware for CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins (update this for production)
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
+
 
 class TopicInput(BaseModel): 
     topic: str
